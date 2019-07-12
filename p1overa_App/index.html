@@ -21,30 +21,25 @@
         <header>
             <!--<img src="./assets/android-chrome-192x192.png" alt="Logo" class="header__logo">-->
             <form class="search">
-                <input type="text" class="search__field" id="searchInput" placeholder="Cerca la tua città">
-                <button type="button" class="btn search__btn" id="search__btn">
+                <input type="text" class="search__field" id="searchInput" placeholder="Cerca la tua città"
+                    onkeypress="triggerEvents()">
+                <button type="button" class="btn search__btn" id="search__btn" onclick="triggerEvents()">
                     <span>Clicca qui</span>
                 </button>
             </form>
 
         </header>
-        <main>
-            <div><img id="icon_img" src=""></div>
-            <div id="weather_description">
-                <h1 id="cityName"></h1>
-                <div id="weather_card">
-                    <div id="temperature"></div>
-                    <div id="local_des"></div>
-
+        <main class="first_diplay" id="display_data">
+            <div id="weather_description"></div>
+            <div class="current_location" id="current_locationData">
+                    <div id="current_locationName"></div>
                 </div>
-                </br>
-                <div id="wind_speed" class="button_details"></div>
-                <div id="humidity" class="button_details"></div>
-            </div>
         </main>
+       
+
         <footer class="copyright">
-            &copy; by Anna Conti. Offerto da </br>
-            <a href="http://openweather.com" target="_blank" class="link"> Openweather.com</a>
+            &copy; by RedPeek. Offerto da </br>
+            <a href="http://openweather.com" target="_blank" class="link" style="padding: 4px;"> Openweather.com</a>
         </footer>
 
 
