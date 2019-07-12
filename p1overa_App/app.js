@@ -12,6 +12,7 @@ const imageMap = {
 }
 
 //riscrivi funzione in maniera di beccare sia click che keydown
+
 function triggerEvents() {
     let searchTerm = document.getElementById('searchInput').value;
     if (searchTerm) {
