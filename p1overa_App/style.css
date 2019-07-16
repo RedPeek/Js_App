@@ -18,7 +18,6 @@ html {
 
 .container {
   width: 100%;
-  margin: 4vw auto;
   background-color: transparent;
   overflow: hidden;
   box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
@@ -29,6 +28,8 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 50vh;
+  margin-bottom: 58vh;
 }
 
 #show_meteo {
@@ -44,28 +45,18 @@ html {
   filter: alpha(opacity=50); /*questa è per IE, versioni meno recenti dell'ultima */
 }
 
-#current_locationName{
+#current_locationName {
   font-family: monospace;
-  border: 1px solid;
-  padding: 10px;
-  border-style: groove;
-  border-radius: 10px;
+  padding: 5px;
   font-size: x-large;
-  background: #f3f8f2;
-  opacity: 0.6;
+  opacity: 0.8;
   filter: alpha(opacity=50); /*questa è per IE, versioni meno recenti dell'ultima */
-  }
-
-#weather_description {
-  font-family: monospace;
-  text-align: end;
 }
 
-.current_location{
+.current_location {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: baseline;
 }
 
 .header {
@@ -86,6 +77,7 @@ form {
   border-radius: 10rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-left: 3rem;
   transition: all 0.3s;
   padding: 16px;
@@ -106,7 +98,7 @@ form {
   padding: 10px;
 }
 .search__field:focus {
-  outline: none;
+  outline: 0;
 }
 .search__field::placeholder {
   color: black;
@@ -127,7 +119,7 @@ form {
   cursor: pointer;
   align-items: center;
   transition: all 0.2s;
-  font-family: monospace;
+  font-family: "Barriecito", cursive;
 }
 .btn:hover {
   transform: scale(1.05);
@@ -138,14 +130,19 @@ form {
 }
 
 .search__btn {
-  margin-inline-start: auto;
+  letter-spacing: 0.1rem;
+}
+
+#home_btn{
+  color: black;
+  text-decoration: none;
 }
 
 .show_meteo {
   height: 45vh;
 }
 
-.copyright {
+.footer {
   position: fixed;
   color: #ceaeae;
   background-color: black;
@@ -156,4 +153,75 @@ form {
   align-items: center;
   padding: 10px;
   bottom: 0;
+  flex-flow: column;
+}
+
+.copyright {
+  display: block;
+  letter-spacing: 0.1rem;
+}
+
+.alertCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+  z-index: 3;
+  border: 3px solid green;
+  border-radius: 5px;
+  background: whitesmoke;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: small;
+  width: 350px;
+}
+
+.alertCard h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.alertDialogNone {
+  position: relative;
+}
+
+
+.alertDialogMessage {
+  overflow: auto;
+  color: red;
+  align-items: center;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.closePopUp {
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popupUpBtn:hover {
+  color: #06d85f;
+}
+.displayFlex{
+  display: flex;
+  justify-content: space-between;
+}
+.overlayPopup{
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+}
+.displayAlertDialog {
+  display: flex;
+  width: 100%;
+  opacity: 0.7;
+  justify-content: center;
+  align-content: center;
 }

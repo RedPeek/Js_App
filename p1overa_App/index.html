@@ -1,63 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="assets/favicon-32x32.png" type="image/x-icon">
-    <!-- MyCSS -->
-    <link rel="stylesheet" href="./style.css">
-    <!-- Bootstrap CSS -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
--->
-    <title>Pioverà?</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./indexStyle.css">
+    <title>DashBoard</title>
 </head>
 
 <body>
     <div class="container">
 
         <header>
-            <!--<img src="./assets/android-chrome-192x192.png" alt="Logo" class="header__logo">-->
-            <form class="search">
-                <input type="text" class="search__field" id="searchInput" placeholder="Cerca la tua città"
-                    onkeypress="triggerEvents()">
-                <button type="button" class="btn search__btn" id="search__btn" onclick="triggerEvents()">
-                    <span>Clicca qui</span>
-                </button>
-            </form>
-
-        </header>
-        <main class="first_diplay" id="display_data">
-            <div id="weather_description"></div>
-            <div class="current_location" id="current_locationData">
-                    <div id="current_locationName"></div>
+            <div class="navbar">
+                <img src="./assets/android-chrome-192x192.png" alt="Logo" class="navbar__logo">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="showDrpDown()">Menu
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="./myMeteo.html">My_Meteo</a>
+                        <a href="./myToDo.html">My_ToDo</a>
+                    </div>
                 </div>
+
+            </div>
+        </header>
+        <main>
+            <div id="welcome">
+                <h1 class="welcome">
+                Buongiorno Anna!
+            </h1>
+            <div id="date">
+
+            </div>
+            </div>
         </main>
-       
-
-        <footer class="copyright">
-            &copy; by RedPeek. Offerto da </br>
-            <a href="http://openweather.com" target="_blank" class="link" style="padding: 4px;"> Openweather.com</a>
+        <footer class="footer">
+            <div class="relative_container">
+                <div id="show_location">
+                    <div class="current_location" id="current_locationData">
+                        <div id="current_locationName"></div>
+                    </div>
+                    <button type="button" class="location_btn" onclick="getLocation()">La tua posizione</button>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; by RedPeek.
+            </div>
         </footer>
-
-
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!--JQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="app.js"></script>
+        <script src="index.js"></script>
 </body>
 
 </html>
