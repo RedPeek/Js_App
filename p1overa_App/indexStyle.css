@@ -52,7 +52,6 @@ html {
 .dropdown {
   float: right;
   position: relative;
-  display: inline-block;
   border-radius: 7rem;
 }
 
@@ -104,6 +103,7 @@ html {
 #welcome{
     width: 100%;
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-content: center;
 }
@@ -111,8 +111,13 @@ html {
 .welcome{
     color: #f9f9f9;
     font-family: 'Courier New', Courier, monospace;
-    margin: 50px;
-    height: -webkit-fill-available;
+
+}
+
+#date {
+  left: 10px;
+  color: #fff;
+  font-size: 25px;
 }
 
 .relative_container{

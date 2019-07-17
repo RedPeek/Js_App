@@ -2,6 +2,7 @@ const clear = document.querySelector('.clear');
 const list = document.getElementById('list');
 const input = document.getElementById('input');
 
+
 let LIST = [];
 let id = 0;
 let element;
@@ -9,6 +10,21 @@ let element;
 const CHECK = 'fa-check-circle';
 const UNCHECK = 'fa-circle-thin';
 const LINE_THROUGH = 'lineTrough';
+
+function showDrpDown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+    }
+  }
+
 
 function addToDO(toDo, id, done, trash ) {
 
@@ -55,9 +71,7 @@ function toDoComplete(element){
     element.classList.toggle(CHECK);
     element.classList.toggle(UNCHECK);
     element.parentNode.querySelector('.text').classList.toggle(LINE_THROUGH);
-
-    LIST[element.id].done = LIST[element.id].done ? false : true; 
-
+    LIST[element.id].done = LIST[element.id].done ? true : false; 
 }
  
 //per rimuovere l'attività. ricorda che il tuo elemento ha due padri quindi sali di due livelli
@@ -80,3 +94,15 @@ list.addEventListener('click', function(event){
         toDoRemoving(element);
     }
 })
+
+
+clear.addEventListener('click', function(event){
+    if(event) {
+        document.querySelector('.item').innerHTML = ``;
+        LIST = [];
+    }
+})
+
+function backHome(){
+    window.open('index.html');
+}

@@ -96,6 +96,7 @@ form {
   font-size: 1.7rem;
   width: 30rem;
   padding: 10px;
+  margin-right: 10px;
 }
 .search__field:focus {
   outline: 0;
