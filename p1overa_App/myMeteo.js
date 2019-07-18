@@ -1,14 +1,10 @@
 let key = 'd999a578d6d8fff8855a42b1525503a5';
-var myJson;
-
-
-
 const imageMap = {
-    'Clear': 'url("assets/clear.jpg")',
-    'Rain': 'url("assets/rainy.jpg")',
-    'Snow': 'url("assets/snow.jpg")',
-    'Clouds': 'url("assets/cloudy.jpg")',
-    'Thunderstorm': 'url("assets/storm.jpg")',
+    'Clear': `url("assets/clear.jpg")`,
+    'Rain': `url("assets/rainy.jpg")`,
+    'Snow': `url("assets/snow.jpg")`,
+    'Clouds': `url("assets/cloudy.jpg")`,
+    'Thunderstorm': `url("assets/storm.jpg")`,
 }
 
 function triggerEvents() {
@@ -20,28 +16,27 @@ function triggerEvents() {
 
             Http.onreadystatechange = (e) => {
                 if (Http.readyState === 4 && Http.status === 200) {
-                    myJson = JSON.parse(Http.responseText);
-                    console.log(myJson, Http);
-                    for (var i = 0; i < myJson.weather.length; i++) {
-                        var weatherElements = myJson.weather[i];
+                    weatherResponce = JSON.parse(Http.responseText);
+                    for (var i = 0; i < weatherResponce.weather.length; i++) {
+                        var weatherElements = weatherResponce.weather[i];
                         if (imageMap[weatherElements.main]) {
                             document.body.style.backgroundImage = imageMap[weatherElements.main]
                         } else {
-                            document.body.style.backgroundImage = 'url("assets/default.jpg")'
+                            document.body.style.backgroundImage = `url("assets/default.jpg")`;
                         }
 
                         // take weather : description, icon, main
-                        let iconID = myJson.weather[i].icon;
+                        let iconID = weatherResponce.weather[i].icon;
                         let iconURL = 'http://openweathermap.org/img/wn/' + iconID + '.png';
 
-                        let cityName = myJson.name;
-                        let temperature = myJson.main.temp;
-                        let localDescription = myJson.weather[i].description;
+                        let cityName = weatherResponce.name;
+                        let temperature = weatherResponce.main.temp;
+                        let localDescription = weatherResponce.weather[i].description;
                         let localDescriptionCapitalized = localDescription.charAt(0).toUpperCase() + localDescription.slice(1);
-                        let windSpeed = myJson.wind.speed;
-                        let humidity = myJson.main.humidity;
+                        let windSpeed = weatherResponce.wind.speed;
+                        let humidity = weatherResponce.main.humidity;
 
-                        document.getElementById("display_data").innerHTML =
+                        document.getElementById("displayData").innerHTML =
                             `<div id="show_meteo">
                             <h1><img src="${iconURL}">${cityName}</h1>
                                 <div>${temperature}°</div>
@@ -51,8 +46,8 @@ function triggerEvents() {
                              </div>`
                     }
                 } else if (Http.statusText === "Not Found") {
-                    document.getElementById('alertDialog').classList.remove('alertDialogNone');
-                    document.getElementById('alertDialog').classList.add('displayAlertDialog');
+                    document.getElementById('alertDialog').classList.remove('alert_dialog_none');
+                    document.getElementById('alertDialog').classList.add('display_alert_dialog');
                 }
             }
             Http.open("GET", url);
@@ -61,33 +56,7 @@ function triggerEvents() {
         searchMeteo(searchTerm);
     }
 }
-
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-        function (position) {
-            let currentLocation = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-            const result = fetch(`https://api.openweathermap.org/data/2.5/weather?${currentLocation}&units=metric&APPID=${key}`)
-                .then(
-                    response => {
-                        response.json().then(r => {
-                            const locationName = r.name;
-                            document.getElementById('current_locationData').innerHTML =
-                                `<div id="current_locationName">La tua posizione attuale é ${locationName}`
-                        })
-                    }
-                ).catch(response => {
-                    console.log('ho rotto tutto');
-                })
-        }
-    );
-} else {
-    console.log("E' ora che cambi browser, stronzo!");
-}
-
-
-
-document.getElementById('search__btn').addEventListener('click', triggerEvents(), false);
-
+document.getElementById('searchMeteoBtn').addEventListener('click', triggerEvents(), false);
 document.getElementById('searchInput').onkeypress = function (e) {
     if (!e) e = input.event;
     var keyCode = e.keyCode || e.which;
@@ -97,12 +66,7 @@ document.getElementById('searchInput').onkeypress = function (e) {
         return false;
     }
 }
-
 function closeAlert() {
     document.getElementById('alertDialog').style.display = 'none';
     document.getElementById("resetForm").reset();
-}
-
-function backHome(){
-    window.open('index.html');
 }

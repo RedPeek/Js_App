@@ -9,27 +9,13 @@ let element;
 
 const CHECK = 'fa-check-circle';
 const UNCHECK = 'fa-circle-thin';
-const LINE_THROUGH = 'lineTrough';
-
-function showDrpDown() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function(e) {
-    if (!e.target.matches('.dropbtn')) {
-    var myDropdown = document.getElementById("myDropdown");
-      if (myDropdown.classList.contains('show')) {
-        myDropdown.classList.remove('show');
-      }
-    }
-  }
+const LINE_THROUGH = 'lineThrough';
 
 
-function addToDO(toDo, id, done, trash ) {
+function addToDO(toDo, id, done, trash) {
 
     //se è già nel trash la funzione deve ritornare per evitare che il codice giri a caso
-    if(trash){
+    if (trash) {
         return;
     }
 
@@ -54,29 +40,29 @@ document.addEventListener('keypress', function (event) {
         if (toDo) {
             addToDO(toDo, id, false, false);
             LIST.push({
-                name : toDo,
-                id : id,
-                done : false,
-                trash : false
+                name: toDo,
+                id: id,
+                done: false,
+                trash: false
             });
             id++;
         }
-        input.value="";
+        input.value = "";
     }
 });
 
 //per checcare il todo
 
-function toDoComplete(element){
+function toDoComplete(element) {
     element.classList.toggle(CHECK);
     element.classList.toggle(UNCHECK);
     element.parentNode.querySelector('.text').classList.toggle(LINE_THROUGH);
-    LIST[element.id].done = LIST[element.id].done ? true : false; 
+    LIST[element.id].done = LIST[element.id].done ? true : false;
 }
- 
+
 //per rimuovere l'attività. ricorda che il tuo elemento ha due padri quindi sali di due livelli
 
-function toDoRemoving(element){
+function toDoRemoving(element) {
     element.parentNode.parentNode.removeChild(element.parentNode);
 
     LIST[element.id].trash = true;
@@ -84,25 +70,21 @@ function toDoRemoving(element){
 
 //per beccare gli eventi e segnalare le funzioni di completamento o di rimozione
 
-list.addEventListener('click', function(event){
+list.addEventListener('click', function (event) {
     const element = event.target;
     const elementjob = element.attributes.job.value;
 
-    if(elementjob == 'complete'){
+    if (elementjob == 'complete') {
         toDoComplete(element);
-    }else if (elementjob == 'delete'){
+    } else if (elementjob == 'delete') {
         toDoRemoving(element);
     }
 })
 
 
-clear.addEventListener('click', function(event){
-    if(event) {
+clear.addEventListener('click', function (event) {
+    if (event) {
         document.querySelector('.item').innerHTML = ``;
         LIST = [];
     }
 })
-
-function backHome(){
-    window.open('index.html');
-}
