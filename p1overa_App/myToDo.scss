@@ -1,14 +1,15 @@
-.clear i {    
+.clear i {
   position: relative;
   right: 28px;
-  color:whitesmoke;
+  color: whitesmoke;
   font-size: x-large;
+  .clear i:hover {
+    cursor: pointer;
+    text-shadow: 1px 3px 5px teal;
+    transform: rotate(45deg);
+  }
 }
-.clear i:hover {
-  cursor: pointer;
-  text-shadow: 1px 3px 5px teal;
-  transform: rotate(45deg);
-}
+
 .content {
   max-height: 350px;
   background-color: #fff;
@@ -55,11 +56,11 @@
   left: 50px;
   background-color: #fff;
   max-width: 285px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 .lineThrough {
   text-decoration: line-through;
-  color:black;
+  color: black;
 }
 .item i.delete {
   position: absolute;

@@ -5,19 +5,37 @@ const input = document.getElementById('input');
 
 let LIST = [];
 let id = 0;
-let element;
-
 const CHECK = 'fa-check-circle';
 const UNCHECK = 'fa-circle-thin';
 const LINE_THROUGH = 'lineThrough';
+
+let data = localStorage.getItem("TODO");
+//controllo se la list ha elementi al caricamento della pagina
+if(data){
+    LIST = JSON.parse(data);
+    id = LIST.lenght; //serve a settare l'id come l'ultimo della lista, insomma, l'aggiunge in coda
+    renderList(LIST); 
+}else{
+    LIST = [];
+    id = 0;
+}
+
+function renderList(arr){
+    arr.forEach(function (item){
+        addToDO(item.name, item.id, item.done, item.trash)
+    })
+}
+
+clear.addEventListener('click', function() {
+    localStorage.clear();
+    location.reload();
+})
 
 
 function addToDO(toDo, id, done, trash) {
 
     //se è già nel trash la funzione deve ritornare per evitare che il codice giri a caso
-    if (trash) {
-        return;
-    }
+    if (trash) { return;}
 
     const DONE = done ? CHECK : UNCHECK;
     const LINE = done ? LINE_THROUGH : '';
@@ -33,7 +51,7 @@ function addToDO(toDo, id, done, trash) {
     list.insertAdjacentHTML(position, item);
 }
 
-//controlla se il value è vivo
+//attiva le proprietà sull'item
 document.addEventListener('keypress', function (event) {
     if (event.keyCode === 13) {
         const toDo = input.value;
@@ -43,10 +61,11 @@ document.addEventListener('keypress', function (event) {
                 name: toDo,
                 id: id,
                 done: false,
-                trash: false
+                trash: false,
             });
             id++;
-        }
+            localStorage.setItem("TODO", JSON.stringify(LIST)); //metodo nativo per rowser: window.localStorage(). Per salvare gli elementi della lista. a differenza di sessionStorage, Local salva anche a chiusura pagina
+        } //stringify trasforma qualsiasi elemento fli passiamo in una stringa sia esso una variabile o un oggetto
         input.value = "";
     }
 });
@@ -57,14 +76,13 @@ function toDoComplete(element) {
     element.classList.toggle(CHECK);
     element.classList.toggle(UNCHECK);
     element.parentNode.querySelector('.text').classList.toggle(LINE_THROUGH);
-    LIST[element.id].done = LIST[element.id].done ? true : false;
+    LIST[element.id].done = LIST[element.id].done ? false : true;
 }
 
 //per rimuovere l'attività. ricorda che il tuo elemento ha due padri quindi sali di due livelli
 
 function toDoRemoving(element) {
     element.parentNode.parentNode.removeChild(element.parentNode);
-
     LIST[element.id].trash = true;
 }
 
@@ -79,12 +97,5 @@ list.addEventListener('click', function (event) {
     } else if (elementjob == 'delete') {
         toDoRemoving(element);
     }
-})
-
-
-clear.addEventListener('click', function (event) {
-    if (event) {
-        document.querySelector('.item').innerHTML = ``;
-        LIST = [];
-    }
+    localStorage.setItem("TODO", JSON.stringify(LIST));
 })
