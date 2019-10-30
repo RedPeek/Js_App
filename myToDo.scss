@@ -1,0 +1,119 @@
+.clear i {
+  position: relative;
+  right: 28px;
+  color: whitesmoke;
+  font-size: x-large;
+  .clear i:hover {
+    cursor: pointer;
+    text-shadow: 1px 3px 5px teal;
+    transform: rotate(45deg);
+  }
+}
+
+.content {
+  max-height: 350px;
+  background-color: #fff;
+  overflow: auto;
+  position: fixed;
+  margin-bottom: 30px;
+  bottom: 45px;
+  left: 28px;
+  right: 28px;
+}
+.content::-webkit-scrollbar {
+  display: none;
+}
+.content ul {
+  padding: 0;
+  margin: 0;
+}
+.item {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  min-height: 45px;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: "Squada One", cursive;
+}
+.item i.complete {
+  position: absolute;
+  font-size: 30px;
+  left: 10px;
+}
+.item i.complete:hover {
+  cursor: pointer;
+}
+.fa-check-circle {
+  color: teal;
+}
+.item p.text {
+  position: absolute;
+  font-size: 20px;
+  left: 50px;
+  background-color: #fff;
+  max-width: 285px;
+  font-family: "Courier New", Courier, monospace;
+}
+.lineThrough {
+  text-decoration: line-through;
+  color: black;
+}
+.item i.delete {
+  position: absolute;
+  font-size: 25px;
+  right: 15px;
+}
+.item i.delete:hover {
+  color: #af0000;
+  cursor: pointer;
+}
+.add_item {
+  display: flex;
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.add_item i {
+  font-size: 30px;
+  color: teal;
+}
+.add_item input {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-family: "Squada One", cursive;
+  letter-spacing: 0.8px;
+  padding: 4px;
+  margin-left: 8px;
+}
+.add_item input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: teal;
+  font-family: "Squada One", cursive;
+  font-size: 20px;
+}
+.add_item input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: teal;
+  font-family: "Squada One", cursive;
+  font-size: 20px;
+}
+.add_item input:-ms-input-placeholder {
+  /* IE 10+ */
+  color: teal;
+  font-family: "Squada One", cursive;
+  font-size: 20px;
+}
+.add_item input:-moz-placeholder {
+  /* Firefox 18- */
+  color: teal;
+  font-family: "Squada One", cursive;
+  font-size: 20px;
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/favicon-32x32.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barriecito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.min.css">
+    <title>Pioverà?</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="navbar">
+                <button type="button" class="btn" id="home_btn" onclick="backHome()">
+                    <span>Home</span>
+                </button>
+                <form class="weather_research" id="resetForm">
+                    <div class="inline_start">
+                        <input type="text" class="search_field" id="searchInput" placeholder="Cerca la tua città"
+                            onkeypress="triggerEvents()">
+                        <button type="button" class="dropbtn meteo_button" id="searchMeteoBtn"
+                            onclick="triggerEvents()">
+                            <span>VAI</span>
+                        </button>
+                    </div>
+                </form>
+                <div class="dropdown">
+                    <button class="btn menu_btn dropbtn" onclick="showDrpDown()">Menu
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown_content" id="myDropdown">
+                        <a href="./myMeteo.html">My_Meteo</a>
+                        <a href="./myToDo.html">My_ToDo</a>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <main class="first_diplay" id="displayData">
+        </main>
+        <div id="alertDialog" class="overlay_popup">
+            <div class="alert_dialog_none">
+                <div class="alert_card">
+                    <div class="display_flex">
+                        <h2>Ops...</h2>
+                        <a class="close_pop_up" href="#" onclick="closeAlert()">&times;</a>
+                    </div>
+                    <div class="alert_dialog_message">
+                        Hai scritto in giargianese, forse?
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="copyright">
+                &copy; by RedPeek. Offerto da
+                <a href="https://openweathermap.org/" target="_blank" class="link"> Openweather.com</a>
+            </div>
+        </footer>
+    </div>
+    <script src="myMeteo.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
